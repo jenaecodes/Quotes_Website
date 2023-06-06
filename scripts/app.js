@@ -24,3 +24,19 @@ function DisplayQuote() {
     })
 }
 
+
+function DisplayMeme() {
+    // Save the API Endpoint URL
+    const base_URL = "https://api.imgflip.com/get_memes";
+    const myMeme = document.getElementById("myMeme");
+  
+    fetch(base_URL)
+      .then((response) => response.json()) // Capture the response info and turn it into a JSON object
+      .then((object) => {
+        //Write a conditional that checks API, and outputs that its busy
+        //   console.log(object.success);
+        //    console.log(object.data);
+        myMeme.src = object.data.memes[Math.floor(Math.random() * 100)].url;
+        // console.log(object.data.memes[0]);
+      });
+  }
